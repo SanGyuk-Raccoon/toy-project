@@ -5,7 +5,10 @@ def generateNumber():
 def getUserInput():
     user_answer = input("please enter the number: ")
     return user_answer
-def validateInput(answer, user_answer):
+
+def validateInput(user_answer):
+
+def compareAnswer(answer, user_answer):
     strike = 0
     ball = 0
     for i in range(len(answer)):
