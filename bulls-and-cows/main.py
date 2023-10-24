@@ -3,7 +3,7 @@ def generateNumber():
     answer = random.sample(range(0,10),3)
     return answer
 def getUserInput():
-    user_answer = input("please enter the number: ")
+    user_answer = list(map(int, str(input("please enter the number: "))))
     return user_answer
 
 def validateInput(user_answer):
@@ -23,6 +23,7 @@ def compareAnswer(answer, user_answer):
         elif user_answer in answer:
             ball += 1
     return strike, ball
+
 def printResult(strike, ball):
     if strike and ball == 0:
         print("OUT!")
@@ -34,10 +35,10 @@ answer = generateNumber()
 print(answer)
 
 while True:
-    user_input = getUserInput()
-    validateInput(user_input)
-
-    printResult(user_input)
+    user_answer = getUserInput()
+    validateInput(user_answer)
+    strike_and_ball = compareAnswer(answer, user_answer)
+    printResult(strike_and_ball[0], strike_and_ball[1])
 
 
 
