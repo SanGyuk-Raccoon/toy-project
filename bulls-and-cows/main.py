@@ -53,8 +53,8 @@ print(answer)
 while True:
     user_answer = getUserInput()
     if validateInput(user_answer) == True:
-        strike_and_ball = compareAnswer(answer, user_answer)
-        result = printResult(strike_and_ball[0], strike_and_ball[1])
+        strike_ball_count = compareAnswer(answer, user_answer)
+        result = printResult(strike_ball_count[0], strike_ball_count[1])
         if result == True:
             break
 
