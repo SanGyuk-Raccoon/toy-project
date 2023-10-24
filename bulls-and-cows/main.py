@@ -21,7 +21,7 @@ def compareAnswer(answer, user_answer):
     ball = 0
     for i in range(len(answer)):
         for j in range(len(user_answer_list)):
-            if answer[i] == user_answer_list[j]:
+            if answer[i] == user_answer_list[j] and i == j:
                 strike += 1
             elif answer[i] == user_answer_list[j] and i != j:
                 ball += 1
