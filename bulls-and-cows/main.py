@@ -7,16 +7,17 @@ def getUserInput():
     return user_answer
 
 def validateInput(user_answer):
-    user_answer_list = list(map(int, str(user_answer)))
+    if user_answer.isdigit() == False:
+        print("error : please enter the NUMBER")
+        return False
     if len(user_answer) != 3:
         print("error : please enter the 3-digits number")
         return False
-    elif len(set(user_answer_list)) != 3:
+    if len(set(user_answer)) != 3:
         print("error : please enter the UNIQUE number")
         return False
-    elif user_answer.isdigit == False:
-        print("error : please enter the NUMBER")
-        return False
+
+    return True
 
 def compareAnswer(answer, user_answer):
     user_answer_list = list(map(int, str(user_answer)))
@@ -46,11 +47,11 @@ print(answer)
 
 while True:
     user_answer = getUserInput()
-    validateInput(user_answer)
-    strike_and_ball = compareAnswer(answer, user_answer)
-    result = printResult(strike_and_ball[0], strike_and_ball[1])
-    if result == True:
-        break
+    if validateInput(user_answer) == True:
+        strike_and_ball = compareAnswer(answer, user_answer)
+        result = printResult(strike_and_ball[0], strike_and_ball[1])
+        if result == True:
+            break
 
 
 
