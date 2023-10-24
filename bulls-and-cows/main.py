@@ -14,13 +14,11 @@ def validateInput(answer, user_answer):
         elif user_answer in answer:
             ball += 1
     return strike, ball
-def compareAnswer():
-    # n(strike)
-    # n(Ball)
-    # print(n(strike, n(Ball)))
-    return
-def printResult(result):
-    return
+def printResult(strike, ball):
+    if strike and ball == 0:
+        print("OUT!")
+    else:
+        print("strike :", strike, "ball", ball)
 ###### 실제 게임 동작
 
 answer = generateNumber()
@@ -30,7 +28,7 @@ while True:
     user_input = getUserInput()
     validateInput(user_input)
 
-    compareAnswer(user_input)
+    printResult(user_input)
 
 
 
