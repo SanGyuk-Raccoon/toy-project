@@ -3,7 +3,8 @@ def generateNumber():
     answer = random.sample(range(0,10),3)
     return answer
 def getUserInput():
-    return
+    user_answer = input("please enter the number: ")
+    return user_answer
 def validateInput():
     return
 def compareAnswer():
