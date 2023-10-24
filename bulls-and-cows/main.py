@@ -7,6 +7,8 @@ def getUserInput():
     return user_answer
 
 def validateInput(user_answer):
+    if len(user_answer) != 3:
+        print("error : please enter the 3-digits number")
 
 def compareAnswer(answer, user_answer):
     strike = 0
