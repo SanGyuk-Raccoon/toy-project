@@ -12,8 +12,8 @@ def validateInput(user_answer):
         print("error : please enter the NUMBER")
         return False
 
-    if len(user_answer) != 3:
-        print("error : please enter the 3-digits number")
+    if len(set(user_answer)) != 3:
+        print("error : please enter the 3-digits or UNIQUE number")
         return False
 
     if len(set(user_answer)) != 3:
@@ -49,7 +49,6 @@ def printResult(strike, ball):
 answer = generateNumber()
 print(answer)
 
-
 while True:
     user_answer = getUserInput()
     if validateInput(user_answer) == True:
@@ -57,7 +56,3 @@ while True:
         result = printResult(strike_ball_count[0], strike_ball_count[1])
         if result == True:
             break
-
-
-
-
