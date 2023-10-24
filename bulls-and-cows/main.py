@@ -3,13 +3,14 @@ def generateNumber():
     answer = random.sample(range(0,10),3)
     return answer
 def getUserInput():
-    user_answer = list(map(int, str(input("please enter the number: "))))
+    user_answer = input("please enter the number: ")
     return user_answer
 
 def validateInput(user_answer):
+    user_answer_list = list(map(int, str(user_answer)))
     if len(user_answer) != 3:
         print("error : please enter the 3-digits number")
-    elif len(set(user_answer)) != 3:
+    elif len(set(user_answer_list)) != 3:
         print("error : please enter the UNIQUE number")
     elif user_answer.isdigit == False:
         print("error : please enter the NUMBER")
