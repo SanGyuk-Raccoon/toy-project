@@ -11,6 +11,8 @@ def validateInput(user_answer):
         print("error : please enter the 3-digits number")
     elif len(set(user_answer)) != 3:
         print("error : please enter the UNIQUE number")
+    elif user_answer.isdigit == False:
+        print("error : please enter the NUMBER")
 
 def compareAnswer(answer, user_answer):
     strike = 0
