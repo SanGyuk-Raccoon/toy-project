@@ -10,10 +10,13 @@ def validateInput(user_answer):
     user_answer_list = list(map(int, str(user_answer)))
     if len(user_answer) != 3:
         print("error : please enter the 3-digits number")
+        return False
     elif len(set(user_answer_list)) != 3:
         print("error : please enter the UNIQUE number")
+        return False
     elif user_answer.isdigit == False:
         print("error : please enter the NUMBER")
+        return False
 
 def compareAnswer(answer, user_answer):
     user_answer_list = list(map(int, str(user_answer)))
@@ -30,6 +33,9 @@ def compareAnswer(answer, user_answer):
 def printResult(strike, ball):
     if strike == 0 and ball == 0:
         print("OUT!")
+    elif strike == 3:
+        print("you win!")
+        return True
     else:
         print("strike :", strike, "ball", ball)
 ###### 실제 게임 동작
@@ -42,7 +48,9 @@ while True:
     user_answer = getUserInput()
     validateInput(user_answer)
     strike_and_ball = compareAnswer(answer, user_answer)
-    printResult(strike_and_ball[0], strike_and_ball[1])
+    result = printResult(strike_and_ball[0], strike_and_ball[1])
+    if result == True:
+        break
 
 
 
