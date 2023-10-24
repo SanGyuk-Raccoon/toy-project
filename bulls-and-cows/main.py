@@ -1,5 +1,7 @@
 def generateNumber():
-    return
+    import random
+    answer = random.sample(range(0,10),3)
+    return answer
 def getUserInput():
     return
 def validateInput():
@@ -14,6 +16,7 @@ def printResult(result):
 ###### 실제 게임 동작
 
 answer = generateNumber()
+print(answer)
 
 while True:
     user_input = getUserInput()
