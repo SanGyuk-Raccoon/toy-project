@@ -28,7 +28,7 @@ def compareAnswer(answer, user_answer):
     return strike, ball
 
 def printResult(strike, ball):
-    if strike and ball == 0:
+    if strike == 0 and ball == 0:
         print("OUT!")
     else:
         print("strike :", strike, "ball", ball)
