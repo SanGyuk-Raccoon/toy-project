@@ -19,10 +19,11 @@ def compareAnswer(answer, user_answer):
     strike = 0
     ball = 0
     for i in range(len(answer)):
-        if answer[i] == user_answer[i]:
-            strike += 1
-        elif user_answer in answer:
-            ball += 1
+        for j in range(len(user_answer)):
+            if answer[i] == user_answer[j]:
+                strike += 1
+            elif answer[i] == user_answer[j] and i != j:
+                ball += 1
     return strike, ball
 
 def printResult(strike, ball):
@@ -34,6 +35,7 @@ def printResult(strike, ball):
 
 answer = generateNumber()
 print(answer)
+
 
 while True:
     user_answer = getUserInput()
