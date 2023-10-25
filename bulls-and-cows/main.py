@@ -12,7 +12,7 @@ def getUserInput():
 
 
 def validateInput(user_answer):
-    if user_answer.isdigit() == False:
+    if not user_answer.isdigit():
         print("error : please enter the NUMBER")
         return False
 
