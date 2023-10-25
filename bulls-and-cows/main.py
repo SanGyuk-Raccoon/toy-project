@@ -51,7 +51,7 @@ print(answer)
 while True:
     user_answer = getUserInput()
     if validateInput(user_answer) == True:
-        strike_count, ball_count, out_count= compareAnswer(answer, user_answer)
+        strike_count, ball_count, out_count = compareAnswer(answer, user_answer)
         result = printResult(strike_count, ball_count, out_count)
-        if result == True:
+        if strike_count == 3:
             break
