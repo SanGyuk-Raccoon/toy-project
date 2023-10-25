@@ -1,5 +1,5 @@
+import random
 def generateNumber():
-    import random
     answer = random.sample(range(0, 10),3)
     return answer
 
@@ -46,6 +46,8 @@ def printResult(strike, ball):
         print(strike,"S ",ball,"B")
 
 ###### 실제 게임 동작
+# game_count = 0
+# while game_count > 10:
 answer = generateNumber()
 print(answer)
 
