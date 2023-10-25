@@ -22,7 +22,6 @@ def compareAnswer(answer, user_answer):
     user_answer_list = list(map(int, str(user_answer)))
     strike = 0
     ball = 0
-    out = 0
 
     for i in range(len(answer)):
         for j in range(len(user_answer_list)):
@@ -30,8 +29,8 @@ def compareAnswer(answer, user_answer):
                 strike += 1
             elif answer[i] == user_answer_list[j] and i != j:
                 ball += 1
-            else:
-                out += 1
+
+    out = 3 - strike - ball
 
     return strike, ball, out
 
