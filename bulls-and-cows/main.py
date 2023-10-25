@@ -16,10 +16,6 @@ def validateInput(user_answer):
         print("error : please enter the 3-digits or UNIQUE number")
         return False
 
-    if len(set(user_answer)) != 3:
-        print("error : please enter the UNIQUE number")
-        return False
-
     return True
 
 def compareAnswer(answer, user_answer):
