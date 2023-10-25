@@ -50,14 +50,15 @@ def printResult(strike, ball, out):
 
 
 ###### 실제 게임 동작
-# game_count = 0
-# while game_count > 10:
+
+max_game_count = 10
 answer = generateNumber()
 print(answer)
 
-while True:
+while max_game_count > 0:
     user_answer = getUserInput()
     if validateInput(user_answer) == True:
+        max_game_count -= 1
         strike_count, ball_count, out_count = compareAnswer(answer, user_answer)
         result = printResult(strike_count, ball_count, out_count)
         if strike_count == 3:
