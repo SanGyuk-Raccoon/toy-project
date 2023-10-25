@@ -26,6 +26,7 @@ def compareAnswer(answer, user_answer):
     user_answer_list = list(map(int, str(user_answer)))
     strike = 0
     ball = 0
+    out = 0
 
     for i in range(len(answer)):
         for j in range(len(user_answer_list)):
@@ -33,17 +34,18 @@ def compareAnswer(answer, user_answer):
                 strike += 1
             elif answer[i] == user_answer_list[j] and i != j:
                 ball += 1
+            else:
+                out += 1
 
-    return strike, ball
+    return strike, ball, out
 
-def printResult(strike, ball):
-    if strike == 0 and ball == 0:
-        print("OUT!")
-    elif strike == 3:
+def printResult(strike, ball, out):
+    if strike == 3:
         print("you win!")
-        return True
+    elif out == 3:
+        print("strike out!")
     else:
-        print(strike,"S ",ball,"B")
+        print(strike,"S ",ball,"B ",out,"O")
 
 ###### 실제 게임 동작
 # game_count = 0
