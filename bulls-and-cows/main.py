@@ -1,11 +1,15 @@
 import random
+
+
 def generateNumber():
-    answer = random.sample(range(0, 10),3)
+    answer = random.sample(range(0, 10), 3)
     return answer
+
 
 def getUserInput():
     user_answer = input("please enter the number: ")
     return user_answer
+
 
 def validateInput(user_answer):
     if user_answer.isdigit() == False:
@@ -17,6 +21,7 @@ def validateInput(user_answer):
         return False
 
     return True
+
 
 def compareAnswer(answer, user_answer):
     user_answer_list = list(map(int, str(user_answer)))
@@ -34,13 +39,15 @@ def compareAnswer(answer, user_answer):
 
     return strike, ball, out
 
+
 def printResult(strike, ball, out):
     if strike == 3:
         print("you win!")
     elif out == 3:
         print("strike out!")
     else:
-        print(strike,"S ",ball,"B ",out,"O")
+        print(strike, "S ", ball, "B ", out, "O")
+
 
 ###### 실제 게임 동작
 # game_count = 0
