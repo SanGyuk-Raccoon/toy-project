@@ -4,12 +4,6 @@ def generateNumber():
     answer = random.sample(range(0, 10), 3)
     return answer
 
-
-def getUserInput():
-    user_answer = input("please enter the number: ")
-    return user_answer
-
-
 def validateInput(user_answer):
     if not user_answer.isdigit():
         print("error : please enter the NUMBER")
