@@ -6,11 +6,9 @@ def generateNumber():
 
 def validateInput(user_answer):
     if not user_answer.isdigit():
-        print("error : please enter the NUMBER")
         return False
 
     if len(set(user_answer)) != 3:
-        print("error : please enter the 3-digits or UNIQUE number")
         return False
 
     return True
