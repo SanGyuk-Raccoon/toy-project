@@ -1,3 +1,4 @@
+from util import GameResult
 from logic import validateInput
 
 INPUT_WARNING = "INPUT_ERROR!"
@@ -21,3 +22,22 @@ def getUserInput(stdscr):
         stdscr.addstr(2, 0, INPUT_WARNING)
         stdscr.getkey()
         stdscr.addstr(2, 0, " "*(len(INPUT_WARNING)+1)) # getKey에 의해 생기는 문자 1개
+
+def printGameResult(stdscr, game_count, user_input, game_result:GameResult):
+    result = ""
+    if game_result.strike_count == 3:
+        if game_count==1:
+            result = "HOME RUN!"
+        else:
+            result = "you win!"
+    elif game_result.out_count == 3:
+        result = "strike out!"
+    else:
+        result = f"{game_result.strike_count}S, {game_result.ball_count}B, {game_result.out_count}O"
+
+    stdscr.addstr(2, 0, result)
+    stdscr.getkey()
+
+    stdscr.addstr(2, 0, " " * 20)
+    stdscr.addstr(game_count, 40, f"#{game_count} You: {user_input} | {result}")
+    return
