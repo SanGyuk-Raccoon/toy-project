@@ -1,4 +1,5 @@
 import random
+from util import GameResult
 
 def generateNumber():
     answer = random.sample(range(0, 10), 3)
@@ -14,7 +15,7 @@ def validateInput(user_answer):
     return True
 
 
-def compareAnswer(answer, user_answer):
+def getGameResult(answer, user_answer):
     user_answer_list = list(map(int, str(user_answer)))
     strike = 0
     ball = 0
@@ -28,7 +29,9 @@ def compareAnswer(answer, user_answer):
 
     out = 3 - strike - ball
 
-    return strike, ball, out
+    return GameResult(strike_count=strike,
+                      ball_count=ball,
+                      out_count=out)
 
 
 def getResult(strike, ball, out, game_count):
