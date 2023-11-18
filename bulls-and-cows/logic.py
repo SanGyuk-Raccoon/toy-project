@@ -33,10 +33,13 @@ def compareAnswer(answer, user_answer):
     return strike, ball, out
 
 
-def printResult(strike, ball, out):
+def getResult(strike, ball, out, game_count):
     if strike == 3:
-        print("you win!")
+        if game_count==1:
+            return "HOME RUN!"
+        else:
+            return "you win!"
     elif out == 3:
-        print("strike out!")
+        return "strike out!"
     else:
-        print(strike, "S ", ball, "B ", out, "O")
+        return f"{strike}S, {ball}B, {out}O"
