@@ -3,20 +3,30 @@ from logic import validateInput
 
 INPUT_WARNING = "INPUT_ERROR!"
 INPUT_SIZE = 3
-def showTitle(stdscr):
+def playTitleScene(stdscr):
     stdscr.clear()
     stdscr.addstr(0, 0, "THIS IS TITLE")
     stdscr.addstr(1, 0, "PRESS ANY KEY")
+    stdscr.addstr(0, 60, "quit : q")
 
-    stdscr.getkey()
+    key = stdscr.getkey()
+    if key=='q':
+        if quitScene(stdscr):
+            return False
+        
     stdscr.clear()
+    return True
+
+def initGame(stdscr):
+    stdscr.addstr(0, 60, "quit : q")
 
 def getUserInput(stdscr):
     while True:
         stdscr.addstr(0, 0, "please enter the number:")
         stdscr.addstr(1, 0, " " * INPUT_SIZE)
         user_input = stdscr.getstr(1, 0, INPUT_SIZE).decode('utf-8')
-        if validateInput(user_input):
+
+        if user_input=='q' or validateInput(user_input):
             return user_input
 
         stdscr.addstr(2, 0, INPUT_WARNING)
@@ -40,4 +50,16 @@ def printGameResult(stdscr, game_count, user_input, game_result:GameResult):
 
     stdscr.addstr(2, 0, " " * 20)
     stdscr.addstr(game_count, 40, f"#{game_count} You: {user_input} | {result}")
-    return
+
+def quitScene(stdscr):
+    stdscr.clear()
+    stdscr.addstr("real?? (y/n)")
+
+    key = ''
+
+    while True:
+        key = stdscr.getkey()
+        if key=='y':
+            return True
+        elif key=='n':
+            return False
