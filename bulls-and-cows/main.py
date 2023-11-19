@@ -13,6 +13,7 @@ while True:
     # game scene
     is_playing = view.playTitleScene(stdscr)
     user_name = view.getUserName(stdscr)
+
     if not is_playing:
         break
 
