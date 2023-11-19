@@ -44,3 +44,12 @@ def getResult(strike, ball, out, game_count):
         return "strike out!"
     else:
         return f"{strike}S, {ball}B, {out}O"
+
+def getScore(game_count):
+    game_score = 1000
+    score_multiple = 100
+    if game_count == 1:
+        game_score += 1000
+    else:
+        game_score -= game_count * score_multiple
+    return game_score
