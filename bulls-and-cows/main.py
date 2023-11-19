@@ -29,7 +29,8 @@ while True:
         game_count += 1
         game_result = logic.getGameResult(true_number, user_input)
 
-        view.printGameResult(stdscr, game_count, user_input, game_result)
+        view.printGameProgress(stdscr, game_count, user_input, game_result)
+        view.printFinalResult(stdscr, game_count, game_result, true_number)
 
         if game_result.strike_count==3:
             break
