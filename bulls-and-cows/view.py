@@ -13,7 +13,7 @@ def playTitleScene(stdscr):
     if key=='q':
         if quitScene(stdscr):
             return False
-        
+
     stdscr.clear()
     return True
 
@@ -63,3 +63,8 @@ def quitScene(stdscr):
             return True
         elif key=='n':
             return False
+
+def getUserName(stdscr):
+    stdscr.addstr("enter your name :")
+    user_name = stdscr.getstr(1, 0, 3)
+    return user_name
