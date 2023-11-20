@@ -12,7 +12,7 @@ curses.resize_term(LINES, COLS)
 while True:
     # game scene
     is_playing = view.playTitleScene(stdscr)
-    user_name = view.getUserName(stdscr)
+    user_name = view.getPlayerName(stdscr)
 
     if not is_playing:
         break

@@ -44,3 +44,28 @@ def getResult(strike, ball, out, game_count):
         return "strike out!"
     else:
         return f"{strike}S, {ball}B, {out}O"
+
+def getPlayerName():
+    player_name = input("enter your name: ")
+    return player_name
+
+def getPlayerScore(game_count, result, game_result:GameResult):
+    GAME_SCORE = player_score = 1000
+    score_multiple = 100
+
+    if game_result.strike_count == 3:
+        if result == "HOME RUN!":
+            player_score += 1000
+        if result == "HITS":
+            player_score -= game_count * score_multiple
+    elif game_result.out_count == 3:
+        player_score -= game_count * score_multiple
+    return player_score
+def getPlayerData(player_name, player_score):
+    player_data_DICT = {}
+    player_data_DICT.setdefault(player_name, player_score)
+    return player_data_DICT
+
+def updateRanking(user_dict):
+    #userdict : {user_name : score}
+    #rank로 score를 비교 후, 높은 순대로 매기면 될 것 같음.
