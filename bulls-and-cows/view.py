@@ -88,3 +88,13 @@ def getPlayerName(stdscr):
     stdscr.addstr("enter your name :")
     user_name = stdscr.getstr(1, 0, 3)
     return user_name
+
+def printRank(stdscr, player_name, player_score):
+    rank = 1
+    player_ranking_DICT = {}
+    player_ranking_DICT.setdefault(player_name, player_score)
+    player_ranking = sorted(player_ranking_DICT.items(), key=lambda x: x[1], reverse=True)
+
+    for player, score in player_ranking:
+        stdscr.addstr(1, 0, f'{rank} place | {player} : {score}')
+        rank += 1

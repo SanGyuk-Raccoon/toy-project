@@ -12,11 +12,11 @@ curses.resize_term(LINES, COLS)
 while True:
     # game scene
     is_playing = view.playTitleScene(stdscr)
-    user_name = view.getPlayerName(stdscr)
 
     if not is_playing:
         break
 
+    player_name = view.getPlayerName(stdscr)
     true_number = logic.generateNumber()
     game_count = 0
     view.initGame(stdscr)
@@ -30,6 +30,5 @@ while True:
         game_result = logic.getGameResult(true_number, user_input)
 
         view.printGameProgress(stdscr, game_count, user_input, game_result)
-
         if game_result.strike_count == 3:
             break
