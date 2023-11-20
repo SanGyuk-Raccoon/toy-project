@@ -62,8 +62,12 @@ def getPlayerScore(game_count, result, game_result:GameResult):
         player_score -= game_count * score_multiple
     return player_score
 
-def getRanking(player_name, player_score):
+def getRank(player_name, player_score):
     player_data_DICT = {}
     player_data_DICT.setdefault(player_name, player_score)
-    player_ranking = sorted(player_data_DICT.items(), key=lambda x: x[1], reverse=Ture)
+    player_ranking = sorted(player_data_DICT.items(), key=lambda x: x[1], reverse=True)
     return player_ranking
+
+if __name__ == "__main__":
+    R_B = getRank("우정훈", 1)
+    print(R_B)
