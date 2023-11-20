@@ -23,14 +23,13 @@ while True:
 
     while game_count < MAX_GAME_COUNT:
         user_input = view.getUserInput(stdscr)
-        if user_input=='q':
+        if user_input == 'q':
             break
 
         game_count += 1
         game_result = logic.getGameResult(true_number, user_input)
 
         view.printGameProgress(stdscr, game_count, user_input, game_result)
-        view.printFinalResult(stdscr, game_count, game_result, true_number)
 
-        if game_result.strike_count==3:
+        if game_result.strike_count == 3:
             break

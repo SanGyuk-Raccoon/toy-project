@@ -51,22 +51,25 @@ def printGameProgress(stdscr, game_count, user_input, game_result:GameResult):
     stdscr.addstr(2, 0, " " * 20)
     stdscr.addstr(game_count, 40, f"#{game_count} You: {user_input} | {result}")
 
-def printFinalResult(stdscr, game_count, result, true_number):
+# todo 이 부분은 수정이 필요합니다.
+def printFinalResult(stdscr, game_count, result, true_number, game_result:GameResult):
     game_score = 1000
     score_multiple = 100
-    if result == "HOME RUN!":
-        game_score += 1000
-        final_result = "YOU WIN!"
-    elif result == "HITS":
-        game_score -= game_count * score_multiple
-        final_result = "YOU WIN!"
-    else:
+    final_result = ""
+    if game_result.strike_count == 3:
+        if result == "HOME RUN!":
+            game_score += 1000
+            final_result = "YOU WIN!"
+        if result == "HITS":
+            game_score -= game_count * score_multiple
+            final_result = "YOU WIN!"
+    elif game_result.out_count == 3:
         game_score -= game_count * score_multiple
         final_result = "you lose..."
 
     stdscr.addstr(1, 0, final_result)
-    stdscr.addstr(f"answer : {true_number}")
-    stdscr.addstr(f"answer : {game_score}")
+    stdscr.addstr(2, 0, f"answer : {true_number}")
+    stdscr.addstr(3, 0, f"answer : {game_score}")
 
 def quitScene(stdscr):
     stdscr.clear()
