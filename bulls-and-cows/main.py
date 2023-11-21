@@ -1,65 +1,37 @@
-import random
+import logic
+import curses
+import view
 
+MAX_GAME_COUNT = 10
+COLS = 100
+LINES = 20
 
-def generateNumber():
-    answer = random.sample(range(0, 10), 3)
-    return answer
+stdscr = curses.initscr()
+curses.resize_term(LINES, COLS)
+player_data = {}
+while True:
+    # game scene
+    is_playing = view.playTitleScene(stdscr)
 
+    if not is_playing:
+        break
 
-def getUserInput():
-    user_answer = input("please enter the number: ")
-    return user_answer
+    player_name = view.getPlayerName(stdscr)
+    true_number = logic.generateNumber()
+    game_count = 0
+    view.initGame(stdscr)
 
-
-def validateInput(user_answer):
-    if not user_answer.isdigit():
-        print("error : please enter the NUMBER")
-        return False
-
-    if len(set(user_answer)) != 3:
-        print("error : please enter the 3-digits or UNIQUE number")
-        return False
-
-    return True
-
-
-def compareAnswer(answer, user_answer):
-    user_answer_list = list(map(int, str(user_answer)))
-    strike = 0
-    ball = 0
-
-    for i in range(len(answer)):
-        for j in range(len(user_answer_list)):
-            if answer[i] == user_answer_list[j] and i == j:
-                strike += 1
-            elif answer[i] == user_answer_list[j] and i != j:
-                ball += 1
-
-    out = 3 - strike - ball
-
-    return strike, ball, out
-
-
-def printResult(strike, ball, out):
-    if strike == 3:
-        print("you win!")
-    elif out == 3:
-        print("strike out!")
-    else:
-        print(strike, "S ", ball, "B ", out, "O")
-
-
-###### 실제 게임 동작
-
-max_game_count = 10
-answer = generateNumber()
-print(answer)
-
-while max_game_count > 0:
-    user_answer = getUserInput()
-    if validateInput(user_answer) == True:
-        max_game_count -= 1
-        strike_count, ball_count, out_count = compareAnswer(answer, user_answer)
-        result = printResult(strike_count, ball_count, out_count)
-        if strike_count == 3:
+    while game_count < MAX_GAME_COUNT:
+        user_input = view.getUserInput(stdscr)
+        if user_input == 'q':
             break
+
+        game_count += 1
+        game_result = logic.getGameResult(true_number, user_input)
+        view.printGameProgress(stdscr, game_count, user_input, game_result)
+
+        if game_result.strike_count == 3:
+            break
+    player_score = logic.getPlayerScore(game_count, game_result)
+    player_ranking = logic.getRank(player_name, player_score, player_data)
+    view.printRank(stdscr, player_ranking)
