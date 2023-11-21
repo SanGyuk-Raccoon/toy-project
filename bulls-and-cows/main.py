@@ -8,7 +8,7 @@ LINES = 20
 
 stdscr = curses.initscr()
 curses.resize_term(LINES, COLS)
-
+player_data = {}
 while True:
     # game scene
     is_playing = view.playTitleScene(stdscr)
@@ -28,7 +28,10 @@ while True:
 
         game_count += 1
         game_result = logic.getGameResult(true_number, user_input)
-
         view.printGameProgress(stdscr, game_count, user_input, game_result)
+
         if game_result.strike_count == 3:
             break
+    player_score = logic.getPlayerScore(game_count, game_result)
+    player_ranking = logic.getRank(player_name, player_score, player_data)
+    view.printRank(stdscr, player_ranking)

@@ -36,7 +36,7 @@ def getGameResult(answer, user_answer):
 
 def getResult(strike, ball, out, game_count):
     if strike == 3:
-        if game_count==1:
+        if game_count == 1:
             return "HOME RUN!"
         else:
             return "you win!"
@@ -49,23 +49,23 @@ def getPlayerName():
     player_name = input("enter your name: ")
     return player_name
 
-def getPlayerScore(game_count, result, game_result:GameResult):
+def getPlayerScore(game_count, game_result: GameResult):
     GAME_SCORE = player_score = 1000
     score_multiple = 100
 
     if game_result.strike_count == 3:
-        if result == "HOME RUN!":
+        if game_count == 1:
             player_score += 1000
-        if result == "HITS":
+        else:
             player_score -= game_count * score_multiple
-    elif game_result.out_count == 3:
+    else:
         player_score -= game_count * score_multiple
     return player_score
 
-def getRank(player_name, player_score):
-    player_data_DICT = {}
-    player_data_DICT.setdefault(player_name, player_score)
-    player_ranking = sorted(player_data_DICT.items(), key=lambda x: x[1], reverse=True)
+
+def getRank(player_name, player_score, player_data):
+    player_data.setdefault(player_name, player_score)
+    player_ranking = sorted(player_data.items(), key=lambda x: x[1], reverse=True)
     return player_ranking
 
 if __name__ == "__main__":
