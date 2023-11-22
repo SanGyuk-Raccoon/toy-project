@@ -16,7 +16,7 @@ while True:
     view.initGame()
 
     while game_count < MAX_GAME_COUNT:
-        user_input = view.getUserInput()
+        user_input = view.inputUserAnswer()
         if user_input == 'q':
             break
 
