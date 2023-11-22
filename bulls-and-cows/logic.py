@@ -1,6 +1,8 @@
 import random
 from util import GameResult
 
+PLAYER_DATA_DICT = {}
+
 def generateNumber():
     answer = random.sample(range(0, 10), 3)
     return answer
@@ -63,9 +65,9 @@ def getPlayerScore(game_count, game_result: GameResult):
     return player_score
 
 
-def getRank(player_name, player_score, player_data):
-    player_data.setdefault(player_name, player_score)
-    player_ranking = sorted(player_data.items(), key=lambda x: x[1], reverse=True)
+def getRank(player_name, player_score):
+    PLAYER_DATA_DICT.setdefault(player_name, player_score)
+    player_ranking = sorted(PLAYER_DATA_DICT.items(), key=lambda x: x[1], reverse=True)
     return player_ranking
 
 if __name__ == "__main__":
