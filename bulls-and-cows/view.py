@@ -100,7 +100,8 @@ def quitScene():
 
 def getPlayerName():
     stdscr.addstr("enter your name :")
-    user_name = stdscr.getstr(1, 0, 3)
+    init_user_name = stdscr.getstr(1, 0, 3)
+    user_name = init_user_name.decode('utf-8')
     return user_name
 
 
@@ -108,7 +109,6 @@ def printRank(player_ranking):
     stdscr.clear()
     rank = 1
     for player, score in player_ranking:
-        player_str = player.decode('utf-8')
-        stdscr.addstr(f'{rank} place | {player_str} : {score}\n')
+        stdscr.addstr(f'{rank} place | {player} : {score}\n')
+        stdscr.getkey()
         rank += 1
-    stdscr.getkey()
