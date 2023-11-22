@@ -109,5 +109,5 @@ def printRank(player_ranking):
     rank = 1
     for player, score in player_ranking:
         stdscr.addstr(f'{rank} place | {player} : {score}\n')
-        stdscr.getkey()
         rank += 1
+    stdscr.getkey()
