@@ -9,6 +9,7 @@ LINES = 20
 stdscr = curses.initscr()
 curses.resizeterm(LINES, COLS)
 
+
 INPUT_WARNING = "INPUT_ERROR!"
 INPUT_SIZE = 3
 
@@ -63,7 +64,7 @@ def printGameProgress(game_count, user_input, game_result: GameResult):
     stdscr.addstr(game_count, 40, f"#{game_count} You: {user_input} | {result}")
 
 
-def printFinalResult(stdscr, true_number, player_score, game_count, game_result: GameResult):
+def printFinalResult(true_number, player_score, game_count, game_result: GameResult):
     stdscr.clear()
     if game_result.strike_count == 3:
         if game_count == 1:
