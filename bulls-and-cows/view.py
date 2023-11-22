@@ -1,5 +1,5 @@
 from util import GameResult
-from logic import validateInput
+from logic import validateAnswer
 import curses
 
 COLS = 100
@@ -30,13 +30,13 @@ def initGame():
     stdscr.addstr(0, 60, "quit : q")
 
 
-def getUserInput():
+def inputUserAnswer():
     while True:
         stdscr.addstr(0, 0, "please enter the number:")
         stdscr.addstr(1, 0, " " * INPUT_SIZE)
         user_input = stdscr.getstr(1, 0, INPUT_SIZE).decode('utf-8')
 
-        if user_input == 'q' or validateInput(user_input):
+        if user_input == 'q' or validateAnswer(user_input):
             return user_input
 
         stdscr.addstr(2, 0, INPUT_WARNING)
@@ -58,7 +58,6 @@ def printGameProgress(game_count, user_input, game_result: GameResult):
 
     stdscr.addstr(2, 0, result)
     stdscr.getkey()
-
     stdscr.addstr(2, 0, " " * 20)
     stdscr.addstr(game_count, 40, f"#{game_count} You: {user_input} | {result}")
 
