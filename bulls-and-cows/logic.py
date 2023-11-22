@@ -17,6 +17,15 @@ def validateAnswer(user_answer):
     return True
 
 
+def validatePlayerName(player_name):
+    if not player_name.isalpha():
+        return False
+
+    if len(set(player_name)) != 3:
+        return False
+
+    return True
+
 def getGameResult(answer, user_answer):
     user_answer_list = list(map(int, str(user_answer)))
     strike = 0
