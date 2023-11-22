@@ -1,5 +1,6 @@
 from util import GameResult
 from logic import validateAnswer
+from logic import validatePlayerName
 import curses
 
 COLS = 100
@@ -99,9 +100,15 @@ def quitScene():
 
 def getPlayerName():
     stdscr.addstr("enter your name :")
-    init_player_name = stdscr.getstr(1, 0, 3)
-    player_name = init_player_name.decode('utf-8')
-    return player_name
+    while True:
+        init_player_name = stdscr.getstr(1, 0, 3)
+        player_name = init_player_name.decode('utf-8')
+        if validatePlayerName(player_name):
+            return player_name
+
+        stdscr.addstr(1, 0, INPUT_WARNING)
+        stdscr.getkey()
+        stdscr.addstr(1, 0, " " * (len(INPUT_WARNING) + 1))  # getKey에 의해 생기는 문자 1개
 
 
 def printRank(player_ranking):
