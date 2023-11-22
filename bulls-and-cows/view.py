@@ -1,11 +1,17 @@
 from util import GameResult
 from logic import validateInput
+import curses
+
+COLS = 100
+LINES = 20
+
+stdscr = curses.initscr()
+curses.resize_term(LINES, COLS)
 
 INPUT_WARNING = "INPUT_ERROR!"
 INPUT_SIZE = 3
 
-
-def playTitleScene(stdscr):
+def playTitleScene():
     stdscr.clear()
     stdscr.addstr(0, 0, "THIS IS TITLE")
     stdscr.addstr(1, 0, "PRESS ANY KEY")
@@ -13,18 +19,18 @@ def playTitleScene(stdscr):
 
     key = stdscr.getkey()
     if key == 'q':
-        if quitScene(stdscr):
+        if quitScene():
             return False
 
     stdscr.clear()
     return True
 
 
-def initGame(stdscr):
+def initGame():
     stdscr.addstr(0, 60, "quit : q")
 
 
-def getUserInput(stdscr):
+def getUserInput():
     while True:
         stdscr.addstr(0, 0, "please enter the number:")
         stdscr.addstr(1, 0, " " * INPUT_SIZE)
@@ -38,7 +44,7 @@ def getUserInput(stdscr):
         stdscr.addstr(2, 0, " " * (len(INPUT_WARNING) + 1))  # getKey에 의해 생기는 문자 1개
 
 
-def printGameProgress(stdscr, game_count, user_input, game_result: GameResult):
+def printGameProgress(game_count, user_input, game_result: GameResult):
     result = ""
     if game_result.strike_count == 3:
         if game_count == 1:
@@ -58,7 +64,7 @@ def printGameProgress(stdscr, game_count, user_input, game_result: GameResult):
 
 
 # todo 이 부분은 수정이 필요합니다.
-def printFinalResult(stdscr, game_count, true_number, game_result: GameResult):
+def printFinalResult(game_count, true_number, game_result: GameResult):
     GAME_SCORE = 1000
     score_multiple = 100
     final_result = ""
@@ -80,11 +86,9 @@ def printFinalResult(stdscr, game_count, true_number, game_result: GameResult):
     stdscr.getkey()
 
 
-def quitScene(stdscr):
+def quitScene():
     stdscr.clear()
     stdscr.addstr("real?? (y/n)")
-
-    key = ''
 
     while True:
         key = stdscr.getkey()
@@ -94,13 +98,13 @@ def quitScene(stdscr):
             return False
 
 
-def getPlayerName(stdscr):
+def getPlayerName():
     stdscr.addstr("enter your name :")
     user_name = stdscr.getstr(1, 0, 3)
     return user_name
 
 
-def printRank(stdscr, player_ranking):
+def printRank(player_ranking):
     stdscr.clear()
     rank = 1
     for player, score in player_ranking:
