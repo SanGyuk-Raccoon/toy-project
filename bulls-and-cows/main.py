@@ -2,7 +2,7 @@ import logic
 import view
 
 MAX_GAME_COUNT = 10
-player_data = {}
+
 while True:
     # game scene
     is_playing = view.playTitleScene()
@@ -27,5 +27,5 @@ while True:
         if game_result.strike_count == 3:
             break
     player_score = logic.getPlayerScore(game_count, game_result)
-    player_ranking = logic.getRank(player_name, player_score, player_data)
+    player_ranking = logic.getRank(player_name, player_score)
     view.printRank(player_ranking)
