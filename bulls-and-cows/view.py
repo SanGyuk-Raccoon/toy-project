@@ -99,9 +99,9 @@ def quitScene():
 
 def getPlayerName():
     stdscr.addstr("enter your name :")
-    init_user_name = stdscr.getstr(1, 0, 3)
-    user_name = init_user_name.decode('utf-8')
-    return user_name
+    init_player_name = stdscr.getstr(1, 0, 3)
+    player_name = init_player_name.decode('utf-8')
+    return player_name
 
 
 def printRank(player_ranking):
