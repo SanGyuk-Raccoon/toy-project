@@ -63,26 +63,20 @@ def printGameProgress(game_count, user_input, game_result: GameResult):
     stdscr.addstr(game_count, 40, f"#{game_count} You: {user_input} | {result}")
 
 
-# todo 이 부분은 수정이 필요합니다.
-def printFinalResult(game_count, true_number, game_result: GameResult):
-    GAME_SCORE = 1000
-    score_multiple = 100
-    final_result = ""
+def printFinalResult(stdscr, true_number, player_score, game_count, game_result: GameResult):
+    stdscr.clear()
     if game_result.strike_count == 3:
         if game_count == 1:
-            GAME_SCORE += 1000
-            final_result = "YOU WIN!"
+            stdscr.addstr(0, 0, "HOMERUN!")
+            stdscr.addstr(1, 0, f"answer : {true_number}")
+            stdscr.addstr(2, 0, f"answer : {player_score}")
+        elif game_count > 1:
+            stdscr.addstr(0, 0, "YOU WIN!")
+            stdscr.addstr(1, 0, f"answer : {true_number} | retry : {game_count}/10") # MAX_GAME_COUNT = 10
+            stdscr.addstr(2, 0, f"answer : {player_score}")
         else:
-            GAME_SCORE -= game_count * score_multiple
-            final_result = "YOU WIN!"
-    elif game_result.out_count == 3:
-        GAME_SCORE -= game_count * score_multiple
-        final_result = "you lose..."
-
-    stdscr.clear()
-    stdscr.addstr(1, 0, final_result)
-    stdscr.addstr(2, 0, f"answer : {true_number}")
-    stdscr.addstr(3, 0, f"answer : {GAME_SCORE}")
+            stdscr.addstr(0, 0, "YOU LOSE...")
+            stdscr.addstr(1, 0, f"answer : {true_number}")
     stdscr.getkey()
 
 

@@ -28,4 +28,5 @@ while True:
             break
     player_score = logic.getPlayerScore(game_count, game_result)
     player_ranking = logic.getRank(player_name, player_score)
+    view.printFinalResult(true_number, player_score, game_result, game_result)
     view.printRank(player_ranking)
