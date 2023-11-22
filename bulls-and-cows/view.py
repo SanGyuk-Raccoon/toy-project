@@ -69,11 +69,11 @@ def printFinalResult(stdscr, true_number, player_score, game_count, game_result:
         if game_count == 1:
             stdscr.addstr(0, 0, "HOMERUN!")
             stdscr.addstr(1, 0, f"answer : {true_number}")
-            stdscr.addstr(2, 0, f"answer : {player_score}")
+            stdscr.addstr(2, 0, f"score : {player_score}")
         elif game_count > 1:
             stdscr.addstr(0, 0, "YOU WIN!")
             stdscr.addstr(1, 0, f"answer : {true_number} | retry : {game_count}/10") # MAX_GAME_COUNT = 10
-            stdscr.addstr(2, 0, f"answer : {player_score}")
+            stdscr.addstr(2, 0, f"score : {player_score}")
         else:
             stdscr.addstr(0, 0, "YOU LOSE...")
             stdscr.addstr(1, 0, f"answer : {true_number}")
