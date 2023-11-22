@@ -6,7 +6,7 @@ COLS = 100
 LINES = 20
 
 stdscr = curses.initscr()
-curses.resize_term(LINES, COLS)
+curses.resizeterm(LINES, COLS)
 
 INPUT_WARNING = "INPUT_ERROR!"
 INPUT_SIZE = 3
