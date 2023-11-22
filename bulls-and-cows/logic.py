@@ -5,7 +5,7 @@ def generateNumber():
     answer = random.sample(range(0, 10), 3)
     return answer
 
-def validateInput(user_answer):
+def validateAnswer(user_answer):
     if not user_answer.isdigit():
         return False
 
