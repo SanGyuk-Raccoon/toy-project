@@ -53,7 +53,17 @@ def playTitleScene():
 
 
 def initGame():
-    stdscr.addstr(0, 81, "QUIT THE GAME : Q", curses.color_pair(1))
+    stdscr.addstr(0, 73, "RESTART THE GAME : input R", curses.color_pair(1))
+
+def restartGame():
+    stdscr.clear()
+    stdscr.addstr(("Are you sure you want to RESTART? ---> press Y/N"))
+    key = stdscr.getkey()
+    if key == 'y':
+        playTitleScene()
+    elif key == 'n':
+        stdscr.clear()
+        return True
 
 def inputUserAnswer():
     while True:
@@ -61,7 +71,7 @@ def inputUserAnswer():
         stdscr.addstr(1, 0, " " * INPUT_SIZE)
         user_input = stdscr.getstr(1, 0, INPUT_SIZE).decode('utf-8')
 
-        if user_input == 'q' or validateAnswer(user_input):
+        if user_input == 'R' or validateAnswer(user_input):
             return user_input
 
         stdscr.addstr(2, 0, ANSWER_WARNING, curses.color_pair(1))
