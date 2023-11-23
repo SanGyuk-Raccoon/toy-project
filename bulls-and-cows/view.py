@@ -125,7 +125,7 @@ def quitScene():
         elif key == 'n':
             return False
 
-
+# todo 중복된 이름이 있으면 따로 출력하는 것으로 수정이 필요합니다.
 def getPlayerName():
     stdscr.addstr("enter your name :")
     while True:
