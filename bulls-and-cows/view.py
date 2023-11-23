@@ -96,7 +96,7 @@ def quitScene():
 def getPlayerName():
     stdscr.addstr("enter your name :")
     while True:
-        init_player_name = stdscr.getstr(1, 0, 3)
+        init_player_name = stdscr.getstr(1, 0, 3).upper()
         player_name = init_player_name.decode('utf-8')
         if validatePlayerName(player_name):
             return player_name
