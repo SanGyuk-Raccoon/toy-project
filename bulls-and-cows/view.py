@@ -7,6 +7,8 @@ COLS = 100
 LINES = 20
 
 stdscr = curses.initscr()
+curses.start_color()
+curses.init_pair(1, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
 curses.resizeterm(LINES, COLS)
 
 NAME_WARNING = "please enter 3-digits-English letter"
@@ -15,9 +17,29 @@ INPUT_SIZE = 3
 
 def playTitleScene():
     stdscr.clear()
-    stdscr.addstr(0, 0, "THIS IS TITLE")
-    stdscr.addstr(1, 0, "PRESS ANY KEY")
-    stdscr.addstr(0, 60, "quit : q")
+    curses.flash()
+    TITLE = '''
+    .:. .:::... .:                                             _--_     dMb
+    .-..=++++*-.::                                          __(._  )   d0P
+    .::.---=+*++*=:--:.                                        <  (D)  .MP
+  .-*###**+--==*#%##*=                                        .~ \ /~```M-.
+   ......=+-:-=***.                                         .~    V    Mo_ \\
+     .:-:-=-+=*+-                                         (   (___. {:)-./
+         :=******+-.                                         ~._____.(:}
+         :*#%%%%+                                             /     .M\\
+       .=*#+*#%%#+.                                          /      "" \\
+      .-*#%%#%%%%#.                                          |    /\\   |
+       .+#*#%%%%##%:                                         /   /  \\   \\
+        .=+#++++*#+:                                        /   /    \\   \\
+                                                            \\__/      \\__/
+                                                            / /        | |
+                                                          .^V^.      .^V^.
+                                                           +-+        +-+"
+    '''
+    stdscr.addstr(0, 0, TITLE)
+    stdscr.addstr(4, 32, "BUllS AND COWS", curses.A_STANDOUT)
+    stdscr.addstr(6, 28, "PRESS ANY KEY TO START...", curses.A_BLINK)
+    stdscr.addstr(0, 83, "QUIT THE GAME : Q", curses.color_pair(1))
 
     key = stdscr.getkey()
     if key == 'q':
