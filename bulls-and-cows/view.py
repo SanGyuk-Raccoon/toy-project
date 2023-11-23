@@ -9,6 +9,8 @@ LINES = 20
 stdscr = curses.initscr()
 curses.start_color()
 curses.init_pair(1, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
+curses.init_pair(2, curses.COLOR_YELLOW, curses.COLOR_BLACK)
+curses.init_pair(3, curses.COLOR_CYAN, curses.COLOR_BLACK)
 curses.resizeterm(LINES, COLS)
 
 NAME_WARNING = "please enter 3-digits-English letter"
@@ -63,7 +65,7 @@ def inputUserAnswer():
         if user_input == 'q' or validateAnswer(user_input):
             return user_input
 
-        stdscr.addstr(2, 0, ANSWER_WARNING)
+        stdscr.addstr(2, 0, ANSWER_WARNING, curses.color_pair(1))
         stdscr.getkey()
         stdscr.addstr(2, 0, " " * (len(ANSWER_WARNING) + 1))  # getKey에 의해 생기는 문자 1개
 
@@ -80,17 +82,17 @@ def printGameProgress(game_count, user_input, game_result: GameResult):
     else:
         result = f"{game_result.strike_count}S, {game_result.ball_count}B, {game_result.out_count}O"
 
-    stdscr.addstr(2, 0, result)
+    stdscr.addstr(2, 0, result, curses.color_pair(3))
     stdscr.getkey()
     stdscr.addstr(2, 0, " " * 20)
-    stdscr.addstr(game_count, 40, f"#{game_count} You: {user_input} | {result}")
+    stdscr.addstr(game_count, 40, f"#{game_count} You: {user_input} | {result}", curses.color_pair(3))
 
 
 def printFinalResult(true_number, player_score, game_count, game_result: GameResult):
     stdscr.clear()
     if game_result.strike_count == 3:
         if game_count == 1:
-            stdscr.addstr(0, 0, "HOMERUN!")
+            stdscr.addstr(0, 0, "HOMERUN!", curses.color_pair(1))
             stdscr.addstr(1, 0, f"answer : {true_number}")
             stdscr.addstr(2, 0, f"score : {player_score}")
         elif game_count > 1:
@@ -123,7 +125,7 @@ def getPlayerName():
         if validatePlayerName(player_name):
             return player_name
 
-        stdscr.addstr(1, 0, NAME_WARNING)
+        stdscr.addstr(1, 0, NAME_WARNING, curses.color_pair(1))
         stdscr.getkey()
         stdscr.addstr(1, 0, " " * (len(NAME_WARNING) + 1))  # getKey에 의해 생기는 문자 1개
 
@@ -132,6 +134,9 @@ def printRank(player_ranking):
     stdscr.clear()
     rank = 1
     for player, score in player_ranking:
-        stdscr.addstr(f'{rank} place | {player} : {score}\n')
+        if rank == 1:
+            stdscr.addstr(f'{rank} place | {player} : {score}\n', curses.color_pair(2))
+        else:
+            stdscr.addstr(f'{rank} place | {player} : {score}\n')
         rank += 1
     stdscr.getkey()
