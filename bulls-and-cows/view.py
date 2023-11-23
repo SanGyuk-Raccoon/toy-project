@@ -53,8 +53,7 @@ def playTitleScene():
 
 
 def initGame():
-    stdscr.addstr(0, 90, "QUIT THE GAME : Q", curses.color_pair(1))
-
+    stdscr.addstr(0, 81, "QUIT THE GAME : Q", curses.color_pair(1))
 
 def inputUserAnswer():
     while True:
