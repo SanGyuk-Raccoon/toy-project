@@ -53,7 +53,7 @@ def playTitleScene():
 
 
 def initGame():
-    stdscr.addstr(0, 60, "quit : q")
+    stdscr.addstr(0, 90, "QUIT THE GAME : Q", curses.color_pair(1))
 
 
 def inputUserAnswer():
@@ -85,29 +85,29 @@ def printGameProgress(game_count, user_input, game_result: GameResult):
     stdscr.addstr(2, 0, result, curses.color_pair(3))
     stdscr.getkey()
     stdscr.addstr(2, 0, " " * 20)
-    stdscr.addstr(game_count, 40, f"#{game_count} You: {user_input} | {result}", curses.color_pair(3))
+    stdscr.addstr(game_count, 74, f"#{game_count} You: {user_input} | {result}", curses.color_pair(3))
 
 
 def printFinalResult(true_number, player_score, game_count, game_result: GameResult):
     stdscr.clear()
     if game_result.strike_count == 3:
         if game_count == 1:
-            stdscr.addstr(0, 0, "HOMERUN!", curses.color_pair(1))
+            stdscr.addstr(0, 0, "HOMERUN!", curses.color_pair(2))
             stdscr.addstr(1, 0, f"answer : {true_number}")
             stdscr.addstr(2, 0, f"score : {player_score}")
         elif game_count > 1:
-            stdscr.addstr(0, 0, "YOU WIN!")
+            stdscr.addstr(0, 0, "YOU WIN!", curses.color_pair(2))
             stdscr.addstr(1, 0, f"answer : {true_number} | retry : {game_count}/10") # MAX_GAME_COUNT = 10
             stdscr.addstr(2, 0, f"score : {player_score}")
         else:
-            stdscr.addstr(0, 0, "YOU LOSE...")
+            stdscr.addstr(0, 0, "YOU LOSE...", curses.color_pair(1))
             stdscr.addstr(1, 0, f"answer : {true_number}")
     stdscr.getkey()
 
 
 def quitScene():
     stdscr.clear()
-    stdscr.addstr("real?? (y/n)")
+    stdscr.addstr("Are you sure you want to QUIT? ---> press Y/N")
 
     while True:
         key = stdscr.getkey()
