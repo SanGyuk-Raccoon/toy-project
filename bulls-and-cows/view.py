@@ -9,8 +9,8 @@ LINES = 20
 stdscr = curses.initscr()
 curses.resizeterm(LINES, COLS)
 
-
-INPUT_WARNING = "INPUT_ERROR!"
+NAME_WARNING = "please enter 3-digits-English letter"
+ANSWER_WARNING = "please enter 3-digits-unique number"
 INPUT_SIZE = 3
 
 def playTitleScene():
@@ -41,9 +41,9 @@ def inputUserAnswer():
         if user_input == 'q' or validateAnswer(user_input):
             return user_input
 
-        stdscr.addstr(2, 0, INPUT_WARNING)
+        stdscr.addstr(2, 0, ANSWER_WARNING)
         stdscr.getkey()
-        stdscr.addstr(2, 0, " " * (len(INPUT_WARNING) + 1))  # getKey에 의해 생기는 문자 1개
+        stdscr.addstr(2, 0, " " * (len(ANSWER_WARNING) + 1))  # getKey에 의해 생기는 문자 1개
 
 
 def printGameProgress(game_count, user_input, game_result: GameResult):
@@ -101,9 +101,9 @@ def getPlayerName():
         if validatePlayerName(player_name):
             return player_name
 
-        stdscr.addstr(1, 0, INPUT_WARNING)
+        stdscr.addstr(1, 0, NAME_WARNING)
         stdscr.getkey()
-        stdscr.addstr(1, 0, " " * (len(INPUT_WARNING) + 1))  # getKey에 의해 생기는 문자 1개
+        stdscr.addstr(1, 0, " " * (len(NAME_WARNING) + 1))  # getKey에 의해 생기는 문자 1개
 
 
 def printRank(player_ranking):
