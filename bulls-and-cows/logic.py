@@ -45,20 +45,6 @@ def getGameResult(answer, user_answer):
                       out_count=out)
 
 
-def getResult(strike, ball, out, game_count):
-    if strike == 3:
-        if game_count == 1:
-            return "HOME RUN!"
-        else:
-            return "you win!"
-    elif out == 3:
-        return "strike out!"
-    else:
-        return f"{strike}S, {ball}B, {out}O"
-
-def getPlayerName():
-    player_name = input("enter your name: ")
-    return player_name
 
 def getPlayerScore(game_count, game_result: GameResult):
     GAME_SCORE = player_score = 1000
