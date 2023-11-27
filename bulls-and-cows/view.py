@@ -52,7 +52,7 @@ def playTitleScene():
     return True
 
 
-def initGame():
+def showGameScreen():
     contour = '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ☀︎ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
     stdscr.addstr(11, 0, contour, curses.color_pair(2))
 
