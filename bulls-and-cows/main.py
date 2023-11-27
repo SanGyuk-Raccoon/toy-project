@@ -14,7 +14,7 @@ while True:
     true_number = logic.generateNumber()
     game_count = 0
     game_result = None
-    view.initGame()
+    view.showGameScreen()
 
     while game_count < MAX_GAME_COUNT:
         user_input = view.inputUserAnswer()
