@@ -86,7 +86,6 @@ def inputUserAnswer():
 
 
 def printGameProgress(game_count, user_input, game_result: GameResult):
-    result = ""
     if game_result.strike_count == 3:
         if game_count == 1:
             result = "HOME RUN!"
