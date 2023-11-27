@@ -139,8 +139,7 @@ def quitScene():
         if quit_answer.lower() == 'y':
             return True
         elif quit_answer.lower() == 'n':
-            stdscr.clear()
-            return False
+            playTitleScene()
         else:
             stdscr.addstr(2, 0, QUIT_RESTART_WARNING, curses.color_pair(1))
             stdscr.refresh()
