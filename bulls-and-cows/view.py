@@ -53,6 +53,16 @@ def playTitleScene():
 
 
 def initGame():
+    contour = '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ☀︎ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+    stdscr.addstr(11, 0, contour, curses.color_pair(2))
+
+    game_rule = ('''
+                 중복 없는 세자리 숫자를 맞춰보세요!
+                 S(Strike) : 위치와 숫자가 동일한 경우
+                 B(Ball): 위치는 다르지만, 해당 숫자가 있는 경우
+                 O(Out) : 제출한 숫자가 포함되어 있지 않은 경우
+                 ''')
+    stdscr.addstr(12, 0, game_rule)
     stdscr.addstr(0, 73, "RESTART THE GAME : input R", curses.color_pair(1))
 
 def restartGame():
