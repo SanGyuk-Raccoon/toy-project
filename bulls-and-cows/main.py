@@ -19,6 +19,8 @@ while True:
         user_input = view.inputUserAnswer()
         if user_input == 'R':
             if view.restartGame():
+                break
+            else:
                 continue
 
         game_count += 1
