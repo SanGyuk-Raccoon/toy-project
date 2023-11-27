@@ -3,19 +3,15 @@ from util import GameResult
 
 PLAYER_DATA_DICT = {}
 
-
 def generateNumber():
     answer = random.sample(range(0, 10), 3)
     return answer
 
-
 def validateAnswer(user_answer):
     if not user_answer.isdigit():
         return False
-
     if len(set(user_answer)) != 3:
         return False
-
     return True
 
 
@@ -25,9 +21,7 @@ def validatePlayerName(player_name):
 
     if len(player_name) != 3:
         return False
-
     return True
-
 
 def getGameResult(answer, user_answer):
     if user_answer != "R":  # 'R' = 재시작 기능, 재시작 기능으로 인한 오류 발생으로 인한 예외 필요
@@ -59,7 +53,6 @@ def getPlayerScore(game_count, game_result: GameResult):
         player_score -= game_count * score_multiple
 
     return player_score
-
 
 def rankPlayers(player_name, player_score):
     original_name = player_name
