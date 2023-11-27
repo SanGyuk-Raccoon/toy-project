@@ -54,6 +54,7 @@ def playTitleScene():
 
 
 def showGameScreen():
+    curses.flash()
     contour = '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ☀︎ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
     stdscr.addstr(11, 0, contour, curses.color_pair(2))
 
@@ -98,12 +99,14 @@ def inputUserAnswer():
 
 def printGameProgress(game_count, user_input, game_result: GameResult):
     if game_result.strike_count == 3:
+        curses.flash()
         if game_count == 1:
             result = "HOME RUN!"
         else:
             result = "HITS!"
     elif game_result.out_count == 3:
         result = "strike out!"
+        curses.flash()
     else:
         result = f"{game_result.strike_count}S, {game_result.ball_count}B, {game_result.out_count}O"
 
@@ -114,6 +117,7 @@ def printGameProgress(game_count, user_input, game_result: GameResult):
 
 
 def printFinalResult(true_number, player_score, game_count, game_result: GameResult):
+    curses.flash()
     stdscr.clear()
     if game_result.strike_count == 3:
         if game_count == 1:
@@ -160,6 +164,7 @@ def getPlayerName():
 
 
 def printRank(player_ranking):
+    curses.flash()
     stdscr.clear()
     rank = 1
     for player, score in player_ranking:
