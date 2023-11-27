@@ -113,9 +113,9 @@ def printFinalResult(true_number, player_score, game_count, game_result: GameRes
             stdscr.addstr(0, 0, "YOU WIN!", curses.color_pair(2))
             stdscr.addstr(1, 0, f"answer : {true_number} | retry : {game_count}/10") # MAX_GAME_COUNT = 10
             stdscr.addstr(2, 0, f"score : {player_score}")
-        else:
-            stdscr.addstr(0, 0, "YOU LOSE...", curses.color_pair(1))
-            stdscr.addstr(1, 0, f"answer : {true_number}")
+    else:
+        stdscr.addstr(0, 0, "YOU LOSE...", curses.color_pair(1))
+        stdscr.addstr(1, 0, f"answer : {true_number}")
     stdscr.getkey()
 
 
