@@ -15,6 +15,7 @@ curses.resizeterm(LINES, COLS)
 
 NAME_WARNING = "please enter 3-digits-English letter"
 ANSWER_WARNING = "please enter 3-digits-unique number"
+QUIT_RESTART_WARNING = "Please enter Y or N."
 INPUT_SIZE = 3
 
 def playTitleScene():
@@ -130,15 +131,20 @@ def printFinalResult(true_number, player_score, game_count, game_result: GameRes
 
 
 def quitScene():
-    stdscr.clear()
-    stdscr.addstr("Are you sure you want to QUIT? ---> press Y/N")
-
     while True:
-        key = stdscr.getkey()
-        if key == 'y':
+        stdscr.clear()
+        stdscr.addstr("Are you sure you want to QUIT? ---> press Y/N")
+        quit_answer = stdscr.getstr(1, 0, 1).decode('utf-8')
+
+        if quit_answer.lower() == 'y':
             return True
-        elif key == 'n':
+        elif quit_answer.lower() == 'n':
+            stdscr.clear()
             return False
+        else:
+            stdscr.addstr(2, 0, QUIT_RESTART_WARNING, curses.color_pair(1))
+            stdscr.refresh()
+            stdscr.getch()
 
 
 def getPlayerName():
