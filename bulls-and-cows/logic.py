@@ -60,6 +60,13 @@ def getPlayerScore(game_count, game_result: GameResult):
 
 
 def rankPlayers(player_name, player_score):
+    original_name = player_name
+    dupe_count = 1
+
+    while player_name in PLAYER_DATA_DICT:
+        player_name = f"{original_name}_{dupe_count}"
+        dupe_count += 1
+
     PLAYER_DATA_DICT.setdefault(player_name, player_score)
     player_ranking = sorted(PLAYER_DATA_DICT.items(), key=lambda x: x[1], reverse=True)
     return player_ranking
