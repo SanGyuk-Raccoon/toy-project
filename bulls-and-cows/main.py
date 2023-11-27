@@ -13,6 +13,7 @@ while True:
     player_name = view.getPlayerName()
     true_number = logic.generateNumber()
     game_count = 0
+    game_result = None
     view.initGame()
 
     while game_count < MAX_GAME_COUNT:
