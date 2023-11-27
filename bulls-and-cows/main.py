@@ -34,6 +34,6 @@ while True:
 
     if game_count >= 1:
         player_score = logic.getPlayerScore(game_count, game_result)
-        player_ranking = logic.getRank(player_name, player_score)
+        player_ranking = logic.rankPlayers(player_name, player_score)
         view.printFinalResult(true_number, player_score, game_count, game_result)
         view.printRank(player_ranking)

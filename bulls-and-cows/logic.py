@@ -59,7 +59,7 @@ def getPlayerScore(game_count, game_result: GameResult):
     return player_score
 
 
-def getRank(player_name, player_score):
+def rankPlayers(player_name, player_score):
     PLAYER_DATA_DICT.setdefault(player_name, player_score)
     player_ranking = sorted(PLAYER_DATA_DICT.items(), key=lambda x: x[1], reverse=True)
     return player_ranking
