@@ -19,6 +19,7 @@ while True:
         user_input = view.inputUserAnswer()
         if user_input == 'R':
             if view.restartGame():
+                game_count = 0
                 break
             else:
                 continue
@@ -30,7 +31,8 @@ while True:
         if game_result.strike_count == 3:
             break
 # todo game_result 함수를 안 받을 때가 없도록 수정이 필요합니다.
-    player_score = logic.getPlayerScore(game_count, game_result)
-    player_ranking = logic.getRank(player_name, player_score)
-    view.printFinalResult(true_number, player_score, game_count, game_result)
-    view.printRank(player_ranking)
+    if game_count >= 1:
+        player_score = logic.getPlayerScore(game_count, game_result)
+        player_ranking = logic.getRank(player_name, player_score)
+        view.printFinalResult(true_number, player_score, game_count, game_result)
+        view.printRank(player_ranking)
