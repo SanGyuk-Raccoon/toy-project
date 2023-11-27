@@ -21,7 +21,7 @@ def validatePlayerName(player_name):
     if not player_name.isalpha():
         return False
 
-    if len(set(player_name)) != 3:
+    if len(player_name) != 3:
         return False
 
     return True
