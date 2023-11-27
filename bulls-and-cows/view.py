@@ -18,6 +18,7 @@ ANSWER_WARNING = "please enter 3-digits-unique number"
 QUIT_RESTART_WARNING = "Please enter Y or N."
 INPUT_SIZE = 3
 
+
 def playTitleScene():
     stdscr.clear()
     curses.flash()
@@ -67,6 +68,7 @@ def showGameScreen():
     stdscr.addstr(12, 0, game_rule)
     stdscr.addstr(0, 73, "RESTART THE GAME : input R", curses.color_pair(1))
 
+
 def restartGame():
     while True:
         stdscr.clear()
@@ -82,6 +84,7 @@ def restartGame():
             stdscr.addstr("Please enter Y or N.", curses.color_pair(1))
             stdscr.refresh()
             stdscr.getch()
+
 
 def inputUserAnswer():
     while True:
@@ -126,7 +129,7 @@ def printFinalResult(true_number, player_score, game_count, game_result: GameRes
             stdscr.addstr(2, 0, f"score : {player_score}")
         elif game_count > 1:
             stdscr.addstr(0, 0, "YOU WIN!", curses.color_pair(2))
-            stdscr.addstr(1, 0, f"answer : {true_number} | retry : {game_count}/10") # MAX_GAME_COUNT = 10
+            stdscr.addstr(1, 0, f"answer : {true_number} | retry : {game_count}/10")  # MAX_GAME_COUNT = 10
             stdscr.addstr(2, 0, f"score : {player_score}")
     else:
         stdscr.addstr(0, 0, "YOU LOSE...", curses.color_pair(1))
