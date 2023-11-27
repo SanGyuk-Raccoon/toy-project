@@ -27,22 +27,23 @@ def validatePlayerName(player_name):
     return True
 
 def getGameResult(answer, user_answer):
-    user_answer_list = list(map(int, str(user_answer)))
-    strike = 0
-    ball = 0
+    if user_answer != "R": #'R' = 재시작 기능, 재시작 기능으로 인한 오류 발생으로 인한 예외 필요
+        user_answer_list = list(map(int, str(user_answer)))
+        strike = 0
+        ball = 0
 
-    for i in range(len(answer)):
-        for j in range(len(user_answer_list)):
-            if answer[i] == user_answer_list[j] and i == j:
-                strike += 1
-            elif answer[i] == user_answer_list[j] and i != j:
-                ball += 1
+        for i in range(len(answer)):
+            for j in range(len(user_answer_list)):
+                if answer[i] == user_answer_list[j] and i == j:
+                    strike += 1
+                elif answer[i] == user_answer_list[j] and i != j:
+                    ball += 1
 
-    out = 3 - strike - ball
+        out = 3 - strike - ball
 
-    return GameResult(strike_count=strike,
-                      ball_count=ball,
-                      out_count=out)
+        return GameResult(strike_count=strike,
+                          ball_count=ball,
+                          out_count=out)
 
 
 
