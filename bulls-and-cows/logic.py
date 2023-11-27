@@ -48,16 +48,14 @@ def getGameResult(answer, user_answer):
 
 
 def getPlayerScore(game_count, game_result: GameResult):
-    GAME_SCORE = player_score = 1000
+    player_score = 1000
     score_multiple = 100
 
-    if game_result.strike_count == 3:
-        if game_count == 1:
-            player_score += 1000
-        else:
-            player_score -= game_count * score_multiple
+    if game_result.strike_count == 3 and game_count == 1:
+        player_score += 1000
     else:
         player_score -= game_count * score_multiple
+
     return player_score
 
 
@@ -65,7 +63,3 @@ def getRank(player_name, player_score):
     PLAYER_DATA_DICT.setdefault(player_name, player_score)
     player_ranking = sorted(PLAYER_DATA_DICT.items(), key=lambda x: x[1], reverse=True)
     return player_ranking
-
-if __name__ == "__main__":
-    R_B = getRank("우정훈", 1)
-    print(R_B)
