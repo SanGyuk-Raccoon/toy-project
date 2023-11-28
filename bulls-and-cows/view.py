@@ -69,23 +69,6 @@ def showGameScreen():
     stdscr.addstr(0, 73, "RESTART THE GAME : input R", curses.color_pair(1))
 
 
-def restartGame():
-    while True:
-        stdscr.clear()
-        stdscr.addstr("Are you sure you want to RESTART? ---> enter Y/N")
-        restart_answer = stdscr.getstr(1, 0, 1).decode('utf-8')
-
-        if restart_answer.lower() == 'y':
-            return True
-        elif restart_answer.lower() == 'n':
-            stdscr.clear()
-            return False
-        else:
-            stdscr.addstr("Please enter Y or N.", curses.color_pair(1))
-            stdscr.refresh()
-            stdscr.getch()
-
-
 def inputUserAnswer():
     while True:
         stdscr.addstr(0, 0, "please enter the number:")
