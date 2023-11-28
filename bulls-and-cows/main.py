@@ -5,10 +5,7 @@ MAX_GAME_COUNT = 10
 
 while True:
     # game scene
-    is_playing = view.playTitleScene()
-
-    if not is_playing:
-        break
+    view.playTitleScene()
 
     player_name = view.getPlayerName()
     true_number = logic.generateNumber()
