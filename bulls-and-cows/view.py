@@ -165,16 +165,23 @@ def quitScene():
 
 
 def getPlayerName():
-    stdscr.addstr("enter your name :")
     while True:
+        stdscr.addstr(0, 0, "enter your name :")
         init_player_name = stdscr.getstr(1, 0, 3).upper()
-        player_name = init_player_name.decode('utf-8')
+        try:
+            player_name = init_player_name.decode('utf-8')
+        except UnicodeDecodeError:
+            stdscr.addstr(1, 0, NAME_WARNING, curses.color_pair(1))
+            stdscr.refresh()
+            stdscr.getch()
+            stdscr.clear()
+            continue
         if validatePlayerName(player_name):
             return player_name
-
-        stdscr.addstr(1, 0, NAME_WARNING, curses.color_pair(1))
-        stdscr.getkey()
-        stdscr.addstr(1, 0, " " * (len(NAME_WARNING) + 1))  # getKey에 의해 생기는 문자 1개
+        else:
+            stdscr.addstr(1, 0, NAME_WARNING, curses.color_pair(1))
+            stdscr.getkey()
+            stdscr.addstr(1, 0, " " * (len(NAME_WARNING) + 1))  # getKey에 의해 생기는 문자 1개
 
 
 def printRank(player_ranking):
