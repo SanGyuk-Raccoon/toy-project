@@ -90,11 +90,16 @@ def inputUserAnswer():
     while True:
         stdscr.addstr(0, 0, "please enter the number:")
         stdscr.addstr(1, 0, " " * INPUT_SIZE)
-        user_input = stdscr.getstr(1, 0, INPUT_SIZE).decode('utf-8')
+        try:
+            user_input = stdscr.getstr(1, 0, INPUT_SIZE).decode('utf-8')
+        except UnicodeDecodeError:
+            stdscr.addstr(2, 0, ANSWER_WARNING, curses.color_pair(1))
+            stdscr.getch()
+            stdscr.addstr(2, 0, " " * (len(ANSWER_WARNING) + 1))
+            continue
 
         if user_input == 'R' or validateAnswer(user_input):
             return user_input
-
         stdscr.addstr(2, 0, ANSWER_WARNING, curses.color_pair(1))
         stdscr.getkey()
         stdscr.addstr(2, 0, " " * (len(ANSWER_WARNING) + 1))  # getKey에 의해 생기는 문자 1개
