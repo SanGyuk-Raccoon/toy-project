@@ -146,7 +146,13 @@ def quitScene():
     while True:
         stdscr.clear()
         stdscr.addstr("Are you sure you want to QUIT? ---> press Y/N")
-        quit_answer = stdscr.getstr(1, 0, 1).decode('utf-8')
+        try:
+            quit_answer = stdscr.getstr(1, 0, 1).decode('utf-8')
+        except UnicodeDecodeError:
+            stdscr.addstr(2, 0, QUIT_RESTART_WARNING, curses.color_pair(1))
+            stdscr.refresh()
+            stdscr.getch()
+            continue
 
         if quit_answer.lower() == 'y':
             return True
