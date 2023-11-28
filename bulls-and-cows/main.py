@@ -16,6 +16,7 @@ while True:
     while game_count < MAX_GAME_COUNT:
         user_input = view.inputUserAnswer()
         if user_input == 'R':
+            game_count = 0
             break
 
         game_count += 1
