@@ -11,7 +11,7 @@ curses.start_color()
 curses.init_pair(1, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
 curses.init_pair(2, curses.COLOR_YELLOW, curses.COLOR_BLACK)
 curses.init_pair(3, curses.COLOR_CYAN, curses.COLOR_BLACK)
-curses.resizeterm(LINES, COLS)
+curses.resize_term(LINES, COLS)
 
 NAME_WARNING = "please enter 3-digits-English letter"
 ANSWER_WARNING = "please enter 3-digits-unique number"
@@ -20,38 +20,38 @@ INPUT_SIZE = 3
 
 
 def playTitleScene():
-    stdscr.clear()
-    curses.flash()
-    TITLE = '''
-    .:. .:::... .:                                             _--_     dMb
-    .-..=++++*-.::                                          __(._  )   d0P
-    .::.---=+*++*=:--:.                                        <  (D)  .MP
-  .-*###**+--==*#%##*=                                        .~ \ /~```M-.
-   ......=+-:-=***.                                         .~    V    Mo_ \\
-     .:-:-=-+=*+-                                         (   (___. {:)-./
-         :=******+-.                                         ~._____.(:}
-         :*#%%%%+                                             /     .M\\
-       .=*#+*#%%#+.                                          /      "" \\
-      .-*#%%#%%%%#.                                          |    /\\   |
-       .+#*#%%%%##%:                                         /   /  \\   \\
-        .=+#++++*#+:                                        /   /    \\   \\
-                                                            \\__/      \\__/
-                                                            / /        | |
-                                                          .^V^.      .^V^.
-                                                           +-+        +-+"
-    '''
-    stdscr.addstr(0, 0, TITLE)
-    stdscr.addstr(4, 32, "BUllS AND COWS", curses.A_STANDOUT)
-    stdscr.addstr(6, 28, "PRESS ANY KEY TO START...", curses.A_BLINK)
-    stdscr.addstr(0, 83, "QUIT THE GAME : Q", curses.color_pair(1))
+    while True:
+        stdscr.clear()
+        curses.flash()
+        TITLE = '''
+        .:. .:::... .:                                             _--_     dMb
+        .-..=++++*-.::                                          __(._  )   d0P
+        .::.---=+*++*=:--:.                                        <  (D)  .MP
+      .-*###**+--==*#%##*=                                        .~ \ /~```M-.
+       ......=+-:-=***.                                         .~    V    Mo_ \\
+         .:-:-=-+=*+-                                         (   (___. {:)-./
+             :=******+-.                                         ~._____.(:}
+             :*#%%%%+                                             /     .M\\
+           .=*#+*#%%#+.                                          /      "" \\
+          .-*#%%#%%%%#.                                          |    /\\   |
+           .+#*#%%%%##%:                                         /   /  \\   \\
+            .=+#++++*#+:                                        /   /    \\   \\
+                                                                \\__/      \\__/
+                                                                / /        | |
+                                                              .^V^.      .^V^.
+                                                               +-+        +-+"
+        '''
+        stdscr.addstr(0, 0, TITLE)
+        stdscr.addstr(4, 32, "BUllS AND COWS", curses.A_STANDOUT)
+        stdscr.addstr(6, 28, "PRESS ANY KEY TO START...", curses.A_BLINK)
+        stdscr.addstr(0, 83, "QUIT THE GAME : Q", curses.color_pair(1))
 
-    key = stdscr.getkey()
-    if key == 'q':
-        if quitScene():
-            return False
-
-    stdscr.clear()
-    return True
+        key = stdscr.getkey()
+        if key == 'q':
+            quitScene()
+        else:
+            stdscr.clear()
+            return
 
 
 def showGameScreen():
@@ -138,9 +138,9 @@ def quitScene():
             continue
 
         if quit_answer.lower() == 'y':
-            return True
+            exit(0)
         elif quit_answer.lower() == 'n':
-            playTitleScene()
+            return
         else:
             stdscr.addstr(2, 0, QUIT_RESTART_WARNING, curses.color_pair(1))
             stdscr.refresh()
