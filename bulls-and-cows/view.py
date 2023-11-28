@@ -90,11 +90,16 @@ def inputUserAnswer():
     while True:
         stdscr.addstr(0, 0, "please enter the number:")
         stdscr.addstr(1, 0, " " * INPUT_SIZE)
-        user_input = stdscr.getstr(1, 0, INPUT_SIZE).decode('utf-8')
+        try:
+            user_input = stdscr.getstr(1, 0, INPUT_SIZE).decode('utf-8')
+        except UnicodeDecodeError:
+            stdscr.addstr(2, 0, ANSWER_WARNING, curses.color_pair(1))
+            stdscr.getch()
+            stdscr.addstr(2, 0, " " * (len(ANSWER_WARNING) + 1))
+            continue
 
         if user_input == 'R' or validateAnswer(user_input):
             return user_input
-
         stdscr.addstr(2, 0, ANSWER_WARNING, curses.color_pair(1))
         stdscr.getkey()
         stdscr.addstr(2, 0, " " * (len(ANSWER_WARNING) + 1))  # getKey에 의해 생기는 문자 1개
@@ -141,7 +146,13 @@ def quitScene():
     while True:
         stdscr.clear()
         stdscr.addstr("Are you sure you want to QUIT? ---> press Y/N")
-        quit_answer = stdscr.getstr(1, 0, 1).decode('utf-8')
+        try:
+            quit_answer = stdscr.getstr(1, 0, 1).decode('utf-8')
+        except UnicodeDecodeError:
+            stdscr.addstr(2, 0, QUIT_RESTART_WARNING, curses.color_pair(1))
+            stdscr.refresh()
+            stdscr.getch()
+            continue
 
         if quit_answer.lower() == 'y':
             return True
@@ -154,16 +165,23 @@ def quitScene():
 
 
 def getPlayerName():
-    stdscr.addstr("enter your name :")
     while True:
+        stdscr.addstr(0, 0, "enter your name :")
         init_player_name = stdscr.getstr(1, 0, 3).upper()
-        player_name = init_player_name.decode('utf-8')
+        try:
+            player_name = init_player_name.decode('utf-8')
+        except UnicodeDecodeError:
+            stdscr.addstr(1, 0, NAME_WARNING, curses.color_pair(1))
+            stdscr.refresh()
+            stdscr.getch()
+            stdscr.clear()
+            continue
         if validatePlayerName(player_name):
             return player_name
-
-        stdscr.addstr(1, 0, NAME_WARNING, curses.color_pair(1))
-        stdscr.getkey()
-        stdscr.addstr(1, 0, " " * (len(NAME_WARNING) + 1))  # getKey에 의해 생기는 문자 1개
+        else:
+            stdscr.addstr(1, 0, NAME_WARNING, curses.color_pair(1))
+            stdscr.getkey()
+            stdscr.addstr(1, 0, " " * (len(NAME_WARNING) + 1))  # getKey에 의해 생기는 문자 1개
 
 
 def printRank(player_ranking):
