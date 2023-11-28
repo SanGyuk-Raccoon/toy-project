@@ -19,11 +19,7 @@ while True:
     while game_count < MAX_GAME_COUNT:
         user_input = view.inputUserAnswer()
         if user_input == 'R':
-            if view.restartGame():
-                game_count = 0
-                break
-            else:
-                continue
+            break
 
         game_count += 1
         game_result = logic.getGameResult(true_number, user_input)
